@@ -44,55 +44,40 @@
 */
 #}
 <div class="layout-container">
-  <header class="primary-menu-container main-menu-logged {{ stickup_header }}">
-    <div class="container flex-wrapper flex-center">
+  <header class="primary-menu-container">
+    <div class="flex-wrapper flex-middle">
+      <p class="logo">IT-PORTAL</p>
       <nav class="main-menu nav" role="navigation">
         {{ main_menu }}
       </nav>
     </div>
   </header>
-  {% if top_photo %}
-    <div class="top-photo responsive-img-background">
-    {{ top_photo }}
-    {% if breadcrumbs %}
-      {{ breadcrumbs }}
-    {% endif %}
-      <div class="text-banner-wrapper">
-        {% if current_page_title %}
-          <h1 class="page-title">{{ current_page_title }}</h1>
-        {% endif %}
-        {% if banner_subtitle %}
-          <p class="banner-subtitle">{{ banner_subtitle }}</p>
-        {% endif %}
-      </div>
-    </div>
-  {% elseif top_photo_default and not is_front %}
-  <div class="top-photo-default background" style="background-image:url('{{ top_photo_default }}');">
-    <div class="text-banner-wrapper">
-      {% if current_page_title %}
-        <h1 class="page-title">{{ current_page_title }}</h1>
-      {% endif %}
-    </div>
-  </div>
-  {% endif %}
   <main role="main">
     <div class="layout-content">
     {% if is_front %}
-      <div class="front-top-banner-wrapper">
-        <div class="banner-text-wrapper">
-          <p class="banner-top-subtitle">---- DIGITAL AGENCY</p>
-          <h1 class="front-top-title">Lets Us Grow Your Creative Website</h1>
-          <p class="banner-top-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore sitam dumam.</p>
+      <div class="front-top-banner-wrapper flex-wrapper">
+        <div class="flex-wrapper flex-center banner-half-text">
+          <div class="banner-text-wrapper">
+            <p class="banner-top-subtitle">---- DIGITAL AGENCY</p>
+            <h1 class="front-top-title">Lets Us Grow Your Creative Website</h1>
+            <p class="banner-top-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore sitam dumam.</p>
+          </div>
         </div>
-        <div>
-        <img src="../img/png/mokup.png" alt="Mokup strony www">
-        </div>
+        <div class="mockup-wrapper background"></div>
       </div>
+      <section class="feature">
+        <div class="flex-wrapper">
+          <div class="feature-item flex-item">
+            <p>---- Why Choose Us</p>
+            <h2>A Few Reasons Why We Might Be The Right Fit</h2>
+          </div>
+        </div>
+      </section>
       {{ page.content }}
     {% else %}
       {{ page.content }}
     {% endif %}
-    </div>{
+    </div>
   </main>
   <footer class="main-footer">
 

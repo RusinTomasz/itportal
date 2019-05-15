@@ -1,0 +1,36 @@
+.front-top-banner-wrapper {
+  color: white;
+  padding-top: 120px;
+  background-image: url("../img/jpg/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 95%;
+  height: 900px;
+  .banner-half-text {
+    width: 50%;
+    padding-left: 28rem;
+    .banner-text-wrapper {
+      padding-top: 8rem;
+      .banner-top-subtitle {
+        letter-spacing: 2.8px;
+        font-weight: 500;
+      }
+      .front-top-title {
+        letter-spacing: -2.4px;
+        font-size: 80px;
+        line-height: 90px;
+        font-weight: 600;
+      }
+      .banner-top-description {
+        font-size: 18px;
+        line-height: 30px;
+      }
+    }
+  }
+  .mockup-wrapper {
+    padding-right: 10rem;
+    background-image: url("../img/png/mockup.png");
+    width: 50%;
+    height: 740px;
+    background-size: contain;
+  }
+}

@@ -1,0 +1,120 @@
+@font-face {
+  font-family: 'rubik';
+  src: url($site_theme_dir + 'fonts/rubik/rubik-bold-webfont.eot');
+  src: url($site_theme_dir + 'fonts/rubik/rubik-bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url($site_theme_dir + 'fonts/rubik/rubik-bold-webfont.woff2') format('woff2'),
+       url($site_theme_dir + 'fonts/rubik/rubik-bold-webfont.woff') format('woff'),
+       url($site_theme_dir + 'fonts/rubik/rubik-bold-webfont.ttf') format('truetype'),
+       url($site_theme_dir + 'fonts/rubik/rubik-bold-webfont.svg#rubikbold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'rubik';
+  src: url($site_theme_dir + 'fonts/rubik/rubik-light-webfont.eot');
+  src: url($site_theme_dir + 'fonts/rubik/rubik-light-webfont.eot?#iefix') format('embedded-opentype'),
+       url($site_theme_dir + 'fonts/rubik/rubik-light-webfont.woff2') format('woff2'),
+       url($site_theme_dir + 'fonts/rubik/rubik-light-webfont.woff') format('woff'),
+       url($site_theme_dir + 'fonts/rubik/rubik-light-webfont.ttf') format('truetype'),
+       url($site_theme_dir + 'fonts/rubik/rubik-light-webfont.svg#rubik_lightregular') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'rubik';
+  src: url($site_theme_dir + 'fonts/rubik/rubik-medium-webfont.eot');
+  src: url($site_theme_dir + 'fonts/rubik/rubik-medium-webfont.eot?#iefix') format('embedded-opentype'),
+       url($site_theme_dir + 'fonts/rubik/rubik-medium-webfont.woff2') format('woff2'),
+       url($site_theme_dir + 'fonts/rubik/rubik-medium-webfont.woff') format('woff'),
+       url($site_theme_dir + 'fonts/rubik/rubik-medium-webfont.ttf') format('truetype'),
+       url($site_theme_dir + 'fonts/rubik/rubik-medium-webfont.svg#rubik_mediumregular') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'rubik';
+  src: url($site_theme_dir + 'fonts/rubik/rubik-regular-webfont.eot');
+  src: url($site_theme_dir + 'fonts/rubik/rubik-regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url($site_theme_dir + 'fonts/rubik/rubik-regular-webfont.woff2') format('woff2'),
+       url($site_theme_dir + 'fonts/rubik/rubik-regular-webfont.woff') format('woff'),
+       url($site_theme_dir + 'fonts/rubik/rubik-regular-webfont.ttf') format('truetype'),
+       url($site_theme_dir + 'fonts/rubik/rubik-regular-webfont.svg#rubikregular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'nunito';
+  src: url($site_theme_dir + 'fonts/nunito/nunito-bold-webfont.eot');
+  src: url($site_theme_dir + 'fonts/nunito/nunito-bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url($site_theme_dir + 'fonts/nunito/nunito-bold-webfont.woff2') format('woff2'),
+       url($site_theme_dir + 'fonts/nunito/nunito-bold-webfont.woff') format('woff'),
+       url($site_theme_dir + 'fonts/nunito/nunito-bold-webfont.ttf') format('truetype'),
+       url($site_theme_dir + 'fonts/nunito/nunito-bold-webfont.svg#nunitobold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'nunito';
+  src: url($site_theme_dir + 'fonts/nunito/nunito-light-webfont.eot');
+  src: url($site_theme_dir + 'fonts/nunito/nunito-light-webfont.eot?#iefix') format('embedded-opentype'),
+       url($site_theme_dir + 'fonts/nunito/nunito-light-webfont.woff2') format('woff2'),
+       url($site_theme_dir + 'fonts/nunito/nunito-light-webfont.woff') format('woff'),
+       url($site_theme_dir + 'fonts/nunito/nunito-light-webfont.ttf') format('truetype'),
+       url($site_theme_dir + 'fonts/nunito/nunito-light-webfont.svg#nunito_lightregular') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'nunito';
+  src: url($site_theme_dir + 'fonts/nunito/nunito-regular-webfont.eot');
+  src: url($site_theme_dir + 'fonts/nunito/nunito-regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url($site_theme_dir + 'fonts/nunito/nunito-regular-webfont.woff2') format('woff2'),
+       url($site_theme_dir + 'fonts/nunito/nunito-regular-webfont.woff') format('woff'),
+       url($site_theme_dir + 'fonts/nunito/nunito-regular-webfont.ttf') format('truetype'),
+       url($site_theme_dir + 'fonts/nunito/nunito-regular-webfont.svg#nunitoregular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+
+}
+@font-face {
+  font-family: 'nunito';
+  src: url($site_theme_dir + 'fonts/nunito/nunito-semibold-webfont.eot');
+  src: url($site_theme_dir + 'fonts/nunito/nunito-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+       url($site_theme_dir + 'fonts/nunito/nunito-semibold-webfont.woff2') format('woff2'),
+       url($site_theme_dir + 'fonts/nunito/nunito-semibold-webfont.woff') format('woff'),
+       url($site_theme_dir + 'fonts/nunito/nunito-semibold-webfont.ttf') format('truetype'),
+       url($site_theme_dir + 'fonts/nunito/nunito-semibold-webfont.svg#nunito_semiboldregular') format('svg');
+  font-weight: 500;
+  font-style: normal;
+
+}
+
+$font-larger:      18px;
+$font-large:      16px;
+$font-regular:    14px;
+$font-small:      12px;
+
+$header-xxlarge:   72px;
+$header-xlarge:   62px;
+$header-large:    52px;
+$header-regular:  36px;
+$header-medium:   26px;
+$header-small:    18px;
+
+
+
+html {
+  font-size: 10px;
+ }
+
+body {
+  font-weight: 400;
+  font-family: 'rubik', sans-serif;
+  font-size: $font-regular;
+  color: $default;
+}
+
+h1,h2,h3,h4, h5 {
+  font-family: 'nunito', sans-serif;
+  font-weight: 500;
+}

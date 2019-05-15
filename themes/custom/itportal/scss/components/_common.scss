@@ -1,0 +1,21 @@
+
+.flex-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex-center {
+ justify-content: center;
+}
+.flex-middle {
+  align-items: center;
+}
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.background {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
