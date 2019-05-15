@@ -1,0 +1,10 @@
+{
+  "name": "bootstrap_sass",
+  "description": "bower",
+  "dependencies": {
+    "normalize-scss": "normalize.scss#^4.0.3"
+  },
+  "devDependencies": {
+    "breakpoint-sass": "^2.7.1"
+  }
+}

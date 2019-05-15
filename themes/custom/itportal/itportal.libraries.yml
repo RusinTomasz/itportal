@@ -1,0 +1,24 @@
+# page libraries
+
+global-styling:
+  css:
+    theme:
+      css/style.css: {}
+      css/itportal.css: {}
+global-scripts:
+  js:
+    js/itportal-main-script.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+
+mobile-menu:
+  css:
+    theme:
+      css/components/mobileMenu.min.css: {}
+  js:
+    js/mobileMenu.min.js: {}
+
+responsive-background:
+  js:
+    js/responsiveBackgroundImage.min.js: {}

@@ -1,0 +1,243 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the itportal theme.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Template\Attribute;
+use Drupal\field\Entity\FieldConfig;
+
+/**
+ * Implements hook_preprocess_HOOK() for HTML document templates.
+ *
+ * Adds body classes if certain regions have content.
+ */
+
+function itportal_preprocess_html(&$variables) {
+  // Add information about the number of sidebars.
+  if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+    $variables['attributes']['class'][] = 'layout-two-sidebars';
+  }
+  elseif (!empty($variables['page']['sidebar_first'])) {
+    $variables['attributes']['class'][] = 'layout-one-sidebar';
+    $variables['attributes']['class'][] = 'layout-sidebar-first';
+  }
+  elseif (!empty($variables['page']['sidebar_second'])) {
+    $variables['attributes']['class'][] = 'layout-one-sidebar';
+    $variables['attributes']['class'][] = 'layout-sidebar-second';
+  }
+  else {
+    $variables['attributes']['class'][] = 'layout-no-sidebars';
+  }
+
+  if (!empty($variables['page']['featured_top'])) {
+    $variables['attributes']['class'][] = 'has-featured-top';
+  }
+
+  $variables['sticky_classes'] = '';
+  if(theme_get_setting('sticky-header') == 1) {
+    $variables['sticky_classes'] = 'sticky-header';
+  }
+
+  $variables['googlekey'] = '';
+  if(theme_get_setting('googletracker') != '' ) {
+    $variables['googlekey'] = theme_get_setting('googletracker');
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for HTML document templates.
+ *
+ * Adds body classes if certain regions have content.
+ */
+function itportal_preprocess_page(&$variables) {
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
+  $variables['main_logo'   ] = file_create_url('/themes/custom/itportal/logo.svg');
+  $variables['main_phone'  ] = theme_get_setting('main_phone')?theme_get_setting('main_phone'):FALSE;
+  $variables['main_mphone' ] = theme_get_setting('main_mobile')?theme_get_setting('main_mobile'):FALSE;
+  $variables['main_address'] = theme_get_setting('main_address')?theme_get_setting('main_address'):FALSE;
+  $variables['main_email'  ] = \Drupal::config('system.site')->get('mail');
+  $variables['top_photo'  ] = "";
+  $variables['banner_subtitle'  ] = "";
+
+  $variables['main_footer'] = theme_get_setting('cs_footer')?theme_get_setting('cs_footer'):FALSE;
+
+  $variables['main_menu']   = itportal_render_menu_navigation('main');
+  $variables['middle_footer_menu']   = itportal_render_menu_navigation('middle-footer');
+  $variables['right_footer_menu']   = itportal_render_menu_navigation('right-footer');
+
+  $request = \Drupal::request();
+  $route_match = \Drupal::routeMatch();
+  $page_title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+
+  $block = \Drupal\block\Entity\Block::load('itportal_breadcrumbs');
+  $block_content = \Drupal::entityTypeManager()
+    ->getViewBuilder('block')
+    ->view($block);
+  $variables['breadcrumbs'] = $block_content;
+
+
+  if($page_title) {
+    $variables['current_page_title'] = $page_title;
+  }
+
+  if (array_key_exists('node', $variables)) {
+    $node = $variables['node'];
+    if (isset($node) ) {
+      if ($node->hasField('field_banner_top_photo')) {
+        $images = $node->get('field_banner_top_photo');
+        $file = $node->field_banner_top_photo->entity;
+        if(sizeof($images) != 0) {
+          $header_responsive = [
+            'label'    => 'hidden',
+            'type'     => 'responsive_image',
+            'settings' => [
+              'responsive_image_style' => 'banner_top',
+            ],
+          ];
+          $renderer = \Drupal::service('renderer');
+          $renderer->addCacheableDependency($header_responsive, $file);
+          $image = $node->get('field_banner_top_photo')->view($header_responsive);
+          $variables['top_photo'] = $image;
+        }
+        if($node->hasField('field_banner_top_subtitle') && $node->get('field_banner_top_subtitle')->value) {
+          $variables['banner_subtitle'] = $node->get('field_banner_top_subtitle')->value;
+        }
+      }
+    }
+  }else if(\Drupal::routeMatch()->getRouteName() == 'entity.taxonomy_term.canonical') {
+    $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+    $header_responsive = [
+      'label'    => 'hidden',
+      'type'     => 'responsive_image',
+      'settings' => [
+        'responsive_image_style' => 'banner_top',
+      ],
+    ];
+    $variables['top_photo'] = $term->field_banner_top_photo->view($header_responsive);
+  }else {
+    // $style        = \Drupal::entityTypeManager()->getStorage('image_style')->load('banner');
+    // $_top_img = Drupal\file\Entity\File::load( theme_get_setting('csTopImage')[0]);
+    // $variables['top_photo_default']        = $style->buildUrl($_top_img->getFileUri());
+  }
+}
+
+function itportal_preprocess_input(&$variables) {
+  if(array_key_exists('#id', $variables['element'])) {
+    $elementID = $variables['element']['#id'];
+    if($elementID == "edit-keys") {
+      $variables['attributes']['placeholder'] = t('Search...');
+    }
+  }
+}
+function itportal_preprocess_form_element(&$variables) {
+  if(array_key_exists('#id', $variables['element'])) {
+  $elementID = $variables['element']['#id'];
+    if($elementID == "edit-keys") {
+      $variables['label']['#title'] = '';
+    }
+  }
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK() for node.html.twig.
+ */
+function itportal_preprocess_node(&$variables) {
+  $variables['shop_link'  ] = theme_get_setting('shop_link')?theme_get_setting('shop_link'):FALSE;
+    if ($variables['node']->getType() == 'article'){
+    $_prev = itportal_node_nextprev_navi($variables['node']->getCreatedTime(),'prev',$variables['node']->getType());
+    $_next = itportal_node_nextprev_navi($variables['node']->getCreatedTime(),'next',$variables['node']->getType());
+    if ($_prev) {
+      $variables['prev_title'] = itportal_safe_cut($_prev->title);
+      $variables['prev_alias'] = $_prev->alias;
+    }
+    if ($_next) {
+      $variables['next_title'] = itportal_safe_cut($_next->title);
+      $variables['next_alias'] = $_next->alias;
+    }
+  }
+
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK() for HTML document templates.
+ *
+ * Adds image classes if certain regions have content.
+ */
+function itportal_preprocess_image_formatter(&$variables) {
+  if ($variables['image_style']) {
+    $variables['image']['#attributes']['class'][] = 'img-responsive';
+  }
+}
+
+function itportal_preprocess_image(&$variables) {
+	if ( isset($variables['style_name']) ) {
+    $variables['attributes']['class'][] = 'img-responsive';
+	}
+}
+
+
+function itportal_render_menu_navigation($menu_name,$theme_alter = ''){
+  //Set system menu mobile
+  $menu_tree = \Drupal::menuTree();
+  // Build the typical default set of menu tree parameters.
+  $parameters = $menu_tree->getCurrentRouteMenuTreeParameters($menu_name);
+  // Load the tree based on this set of parameters.
+  $tree = $menu_tree->load($menu_name, $parameters);
+  // Transform the tree using the manipulators you want.
+  $manipulators = array(
+    // Only show links that are accessible for the current user.
+    array('callable' => 'menu.default_tree_manipulators:checkAccess'),
+    // Use the default sorting of menu links.
+    array('callable' => 'menu.default_tree_manipulators:generateIndexAndSort'),
+  );
+  $tree = $menu_tree->transform($tree, $manipulators);
+  // Finally, build a renderable array from the transformed tree.
+  $menu = $menu_tree->build($tree);
+  if(!empty($theme_alter)){
+    //$menu['#theme'] = $theme_alter;
+  }
+  return \Drupal::service('renderer')->render($menu);
+}
+
+function itportal_safe_cut($string,$length = 40, $suffix = '...'){
+  return (strlen($string) > $length) ?  substr($string, 0, $length) . $suffix : $string;
+}
+
+function itportal_node_nextprev_navi($date,$dir,$type) {
+  if ($dir == 'next') {
+    $_dir = '<';
+  } else {
+    $_dir = '>';
+  }
+  $query = \Drupal::entityQuery('node');
+  $query->condition('type', $type)
+    ->condition('status', 1)
+    ->condition('created', $date, $_dir)
+    ->sort('created' , ($dir == 'next' ? 'DESC' : 'ASC'))
+    ->range(0, 1);
+
+  $results = $query->execute();
+
+
+  if (!empty($results)) {
+    $nodes  = Drupal\node\Entity\Node::loadMultiple($results);
+
+    foreach($nodes as $item) {
+      $nid    = $item->id();
+      $title  = $item->getTitle();
+      $alias  = \Drupal::service('path.alias_manager')->getAliasByPath('/node/'.$item->id());
+      break;
+    }
+    return (object)array(
+      'title' => $title,
+      'alias' => $alias,
+    );
+  } else {
+    return FALSE;
+  }
+}

@@ -1,0 +1,31 @@
+itportal.small:
+  label: small
+  mediaQuery: "(min-width: 0px)"
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+
+itportal.medium:
+  label: medium
+  mediaQuery: "(min-width: 520px)"
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+
+itportal.xmedium:
+  label: xmedium
+  mediaQuery: "(min-width: 992px)"
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+
+itportal.large:
+  label: large
+  mediaQuery: "(min-width: 1200px)"
+  weight: 2
+  multipliers:
+    - 1x
+    - 2x
