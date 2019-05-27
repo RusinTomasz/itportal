@@ -3,6 +3,7 @@ $site_theme_dir: "../";
 $site_module_dir: "../";
 $site_theme_dir: "/themes/custom/itportal/";
 $site_module_dir: "modules/";
+@import "mixins/mixins";
 @import "variables/colours";
 @import "fonts/font";
 @import "components/common";

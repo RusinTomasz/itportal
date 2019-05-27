@@ -34,3 +34,85 @@
     background-size: contain;
   }
 }
+
+.feature {
+  padding: 1rem 0 12rem;
+  .feature-item {
+    width: 33%;
+    .feature-icon {
+      padding: 18rem 7rem 1rem;
+      background-size: 7rem;
+      background-position: 4rem 30%;
+      &.bell-icon {
+        background-image: url("../img/png/bell-icon.png");
+      }
+      &.rocket-icon {
+        background-image: url("../img/png/rocket-icon.png");
+      }
+      &.rack-icon {
+        background-image: url("../img/png/rack-icon.png");
+      }
+      &.packman-icon {
+        background-image: url("../img/png/packman-icon.png");
+      }
+      &.wheel-icon {
+        background-image: url("../img/png/wheel-icon.png");
+      }
+      &.second-row {
+        background-position: 4rem 15%;
+        padding: 13rem 7rem 1rem;
+      }
+    }
+    .feture-description {
+      line-height: 26px;
+    }
+  }
+  .custom-choose-title {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -1.2px;
+    color: $black-title;
+  }
+  .section-number {
+    position: relative;
+    padding: 8rem 3rem 1rem;
+    &::before {
+      content: "01";
+      position: absolute;
+      top: 0;
+      right: 0;
+      @include sectionNumber();
+    }
+  }
+}
+
+.page-speed-banner {
+  padding: 5rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../img/jpg/speed-banner.jpg");
+  .banner-wrapper {
+    .subtitle-small,
+    .section-title,
+    .page-speed-form,
+    .button-holder {
+      width: 100%;
+      text-align: center;
+      color: white;
+    }
+    .page-speed-form {
+      width: auto;
+      border-radius: 50px;
+      background-color: #e36d16;
+      display: inline-block;
+      padding: 2rem;
+      .url-button {
+        min-width: 250px;
+      }
+    }
+    .own-speed-button {
+      margin: 5rem 0;
+    }
+  }
+}

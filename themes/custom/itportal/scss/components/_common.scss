@@ -19,3 +19,46 @@
   background-position: center;
   background-size: cover;
 }
+
+.subtitle-small {
+  font-size: $font-regular;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2.8px;
+}
+
+.section-title {
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: -1.8px;
+}
+
+.standard-button {
+  border-radius: 30px;
+  padding: 2.5rem 3rem;
+  color: $default;
+  outline: none;
+  background: white;
+  border: none;
+  box-shadow: none;
+  margin: 0 2rem;
+}
+
+.submit-button {
+  box-shadow: 0 16px 32px rgba(255, 225, 0, 0.4);
+  background-color: $yellow;
+}
+
+.orange-subtitle {
+  color: $orange;
+}
+
+.black-title {
+  color: $black-title;
+}
+
+.title-medium {
+  font-size: 30px;
+  font-weight: 700;
+  color: $black-title;
+}
