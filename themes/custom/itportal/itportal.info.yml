@@ -19,3 +19,4 @@ libraries:
   - itportal/global-scripts
   - itportal/mobile-menu
   - itportal/responsive-background
+  - itportal/accordion

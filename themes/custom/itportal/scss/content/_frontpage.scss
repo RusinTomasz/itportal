@@ -171,7 +171,6 @@
 .faq {
   padding: 4rem 0 12rem;
   .banner-wrapper {
-    align-items: flex-end;
     .section-number {
       padding: 8rem 0 1rem;
       &::before {
@@ -182,12 +181,36 @@
         margin: 3rem 0;
       }
     }
+    .banner-image {
+      margin-top: 15rem;
+    }
     .faq-questions-wrapper {
       .question-item {
+        padding: 1.5rem 4rem 1.5rem 3rem;
+        border: 2px solid $border;
+        margin: 3rem 0;
+        cursor: pointer;
         &.active {
           background-image: linear-gradient(to right, #f56c1d 0%, #fed154 100%);
           color: white;
         }
+        .question-title {
+          font-size: $font-large;
+          font-weight: 500;
+          letter-spacing: -0.48px;
+          margin: 1.5rem 0;
+          .question-number {
+            margin-right: 2.5rem;
+            display: inline-block;
+          }
+        }
+        .question-answer {
+          opacity: 0.8;
+          max-height: 0;
+          overflow: hidden;
+          transition: all 0.4s;
+          margin: 0;
+        } 
       }
     }
   }
