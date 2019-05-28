@@ -148,3 +148,48 @@
     }
   }
 }
+
+.marketing {
+  background-color: #202332;
+  padding: 4rem 0 12rem;
+  .banner-wrapper {
+    align-items: flex-end;
+    .section-number {
+      padding: 8rem 0 1rem;
+      &::before {
+        content: ".04";
+        left: 0;
+      }
+      .section-title {
+        color: white;
+        margin: 3rem 0;
+      }
+    }
+  }
+}
+
+.faq {
+  padding: 4rem 0 12rem;
+  .banner-wrapper {
+    align-items: flex-end;
+    .section-number {
+      padding: 8rem 0 1rem;
+      &::before {
+        content: ".05";
+        left: 0;
+      }
+      .section-title {
+        margin: 3rem 0;
+      }
+    }
+    .faq-questions-wrapper {
+      .question-item {
+        &.active {
+          background-image: linear-gradient(to right, #f56c1d 0%, #fed154 100%);
+          color: white;
+        }
+      }
+    }
+  }
+}
+
