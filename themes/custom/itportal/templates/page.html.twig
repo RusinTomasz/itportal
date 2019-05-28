@@ -109,10 +109,7 @@
         <div class="banner-wrapper flex-wrapper flex-center flex-middle">
           <p class="subtitle-small">---- Seo Trafic</p>
           <h2 class="section-title">Whats Your Website Score?</h2>
-          <form class="page-speed-form"><input type="text" name="siteUrl" placeholder="Podaj link do swojej strony" class="standard-button url-button"><input type="submit" value="Submit" class="standard-button submit-button"></form>
-          <div class="button-holder">
-            <button class="own-speed-button standard-button">Check this page</button>
-          </div>
+          <form class="page-speed-form"><input type="text" name="siteUrl" placeholder="Podaj link do swojej strony" class="standard-button url-button"><input type="submit" value="Sprawdź wynik" class="standard-button submit-button"></form>
         </div>  
       </section>
       <section class="what-we-do background">
@@ -210,9 +207,23 @@
     </div>
   </main>
   <footer class="main-footer">
-    <div class="container">
-      <div class="flex-one-third">
+    <div class="container footer-container background">
+      <div class="flex-wrapper">
+        <div class="flex-one-third">
+        <p class="logo">IT-PORTAL</p>
+        <p class="footer-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div class="flex-one-third">
+          <h4 class="footer-title">Important links</h4>
+          {{ footer_menu }}
+        </div>
+        <div class="flex-one-third">
+          <p class="logo">IT-PORTAL</p>
+        </div>
       </div>
+    </div>
+    <div class="copy-rights">
+      <p class="copy-rights-text">Copyright By@Tomasz Rusin - 2019</p>
     </div>
   </footer>
 </div>{# /.layout-container #}

@@ -65,8 +65,7 @@ function itportal_preprocess_page(&$variables) {
   $variables['main_footer'] = theme_get_setting('cs_footer')?theme_get_setting('cs_footer'):FALSE;
 
   $variables['main_menu']   = itportal_render_menu_navigation('main');
-  $variables['middle_footer_menu']   = itportal_render_menu_navigation('middle-footer');
-  $variables['right_footer_menu']   = itportal_render_menu_navigation('right-footer');
+  $variables['footer_menu']   = itportal_render_menu_navigation('main-footer');
 
   $request = \Drupal::request();
   $route_match = \Drupal::routeMatch();

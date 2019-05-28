@@ -56,6 +56,12 @@
 .submit-button {
   box-shadow: 0 16px 32px rgba(255, 225, 0, 0.4);
   background-color: $yellow;
+  font-weight: 500;
+  color: #070a22;
+  transition: all 0.4s;
+  &:hover {
+    background-color: #e1f100;
+  }
 }
 
 .orange-subtitle {
@@ -100,3 +106,9 @@
   font-family: 'nunito', sans-serif;
 }
 
+.logo {
+  font-size:30px;
+  font-weight: 600;
+  color: white;
+  margin-right: 15rem;
+}

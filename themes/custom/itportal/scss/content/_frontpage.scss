@@ -84,11 +84,13 @@
   .banner-wrapper {
     .subtitle-small,
     .section-title,
-    .page-speed-form,
-    .button-holder {
+    .page-speed-form {
       width: 100%;
       text-align: center;
       color: white;
+    }
+    .section-title {
+      margin: 1rem 0;
     }
     .page-speed-form {
       width: auto;
@@ -96,12 +98,10 @@
       background-color: #e36d16;
       display: inline-block;
       padding: 2rem;
-      .url-button {
-        min-width: 250px;
-      }
-    }
-    .own-speed-button {
       margin: 5rem 0;
+      .url-button {
+        min-width: 450px;
+      }
     }
   }
 }
@@ -115,6 +115,9 @@
     .subtitle-small {
       text-align: center;
     }
+    .section-title {
+      margin: 2rem 0;
+    }
     .section-number {
       &::before {
         content: ".03";
@@ -122,6 +125,7 @@
     }
   }
   .carts-wrapper {
+    margin-top: 5rem;
     .cart-item {
       max-width: 370px;
       margin: 0 3rem;
