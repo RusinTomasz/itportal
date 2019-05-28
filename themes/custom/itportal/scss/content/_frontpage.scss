@@ -73,17 +73,6 @@
     letter-spacing: -1.2px;
     color: $black-title;
   }
-  .section-number {
-    position: relative;
-    padding: 8rem 3rem 1rem;
-    &::before {
-      content: "01";
-      position: absolute;
-      top: 0;
-      right: 0;
-      @include sectionNumber();
-    }
-  }
 }
 
 .page-speed-banner {
@@ -113,6 +102,49 @@
     }
     .own-speed-button {
       margin: 5rem 0;
+    }
+  }
+}
+
+.what-we-do {
+  background-image: url('../img/jpg/triangle-background.jpg');
+  padding: 5rem 0 12rem;
+  background-size: 100% 520px;
+  background-position: bottom center;
+  .banner-wrapper {
+    .subtitle-small {
+      text-align: center;
+    }
+    .section-number {
+      &::before {
+        content: ".03";
+      }
+    }
+  }
+  .carts-wrapper {
+    .cart-item {
+      max-width: 370px;
+      margin: 0 3rem;
+      padding: 8rem 5.5rem;
+      background-color: white;
+      border: 2px solid #eaefff;
+      &:nth-child(2) {
+        box-shadow: 0 16px 32px rgba(208, 204, 255, 0.4);
+        border: none;
+      }
+      .cart-wrapper {
+        .cart-title,
+        .cart-description {
+          width: 100%;
+          text-align: center;
+        }
+        .cart-icon {
+          margin-bottom: 2rem;
+        }
+        .cart-description {
+          margin: 3rem 0;
+        }
+      }
     }
   }
 }

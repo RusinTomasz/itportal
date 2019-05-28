@@ -62,3 +62,31 @@
   font-weight: 700;
   color: $black-title;
 }
+
+.section-number {
+  position: relative;
+  padding: 8rem 3rem 1rem;
+  &::before {
+    content: "01";
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    @include sectionNumber();
+  }
+}
+
+.cart-title {
+  font-size: $cart-title;
+  color: $black-title;
+  letter-spacing: -0.84px;
+  margin: 3rem 0;
+}
+
+.separation {
+  font-size: $separation;
+  color: $orange;
+  font-family: 'nunito', sans-serif;
+}

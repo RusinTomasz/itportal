@@ -9,6 +9,7 @@ global-scripts:
   js:
     js/itportal-main-script.js: {}
   dependencies:
+    - core/drupal
     - core/jquery
     - core/jquery.once
 

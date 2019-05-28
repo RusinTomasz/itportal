@@ -94,13 +94,16 @@ $font-large:      16px;
 $font-regular:    14px;
 $font-small:      12px;
 
+
+
 $header-xxlarge:   72px;
 $header-xlarge:   62px;
 $header-large:    52px;
 $header-regular:  36px;
 $header-medium:   26px;
 $header-small:    18px;
-
+$cart-title: 28px;
+$separation: 20px;
 
 
 html {
@@ -112,6 +115,9 @@ body {
   font-family: 'rubik', sans-serif;
   font-size: $font-regular;
   color: $default;
+  p {
+    line-height: 26px;
+  }
 }
 
 h1,h2,h3,h4, h5 {
