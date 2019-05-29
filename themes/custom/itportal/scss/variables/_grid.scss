@@ -1,0 +1,20 @@
+$screen-xsmobile: 520px;
+$screen-xsmobile-max: ($screen-xsmobile - 1);
+$screen-mobile: 768px;
+$screen-mobile-max: ($screen-mobile - 1);
+$screen-medium: 992px;
+$screen-medium-max: ($screen-medium - 1);
+$screen-default: 1200px;
+$screen-default-max: ($screen-default - 1);
+$screen-hdplus : 1500px;
+
+$screen-custom: $screen-xsmobile $screen-default;
+$screen-lg: $screen-default;
+$screen-md: $screen-medium $screen-default-max;
+$screen-sm: $screen-mobile $screen-medium-max;
+$screen-xs: $screen-xsmobile $screen-mobile-max;
+$screen-mmin: 0 $screen-medium-max;
+$screen-min: 0 $screen-mobile-max;
+$screen-xsmin: 0 $screen-xsmobile-max;
+$screen-dmin: 0 $screen-default;
+$screen-hdplus: $screen-default $screen-hdplus;

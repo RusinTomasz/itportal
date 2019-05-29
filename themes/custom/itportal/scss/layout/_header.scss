@@ -6,3 +6,48 @@
     margin-right: 15rem;
   }
 }
+
+.top-photo,
+.top-photo-default {
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  .text-banner-wrapper {
+    width: 100%;
+    .page-title,
+    .banner-subtitle {
+      text-align: center;
+      color: white;
+    }
+    .page-title {
+      font-size: 55px;
+      font-weight: 500;
+      text-transform: uppercase;
+      padding: 0 2rem;
+      @include breakpoint($screen-mmin) {
+        font-size: 42px;
+      }
+      @include breakpoint($screen-min) {
+        font-size: 27px;
+      }
+      @include breakpoint($screen-xsmin) {
+        min-height: 400px;
+        font-size: 24px;
+      }
+    }
+    .banner-subtitle {
+      // font-size: $header-regular;
+      line-height: 38px;
+      padding: 0 2rem;
+      @include breakpoint($screen-min) {
+        font-size: 24px;
+      }
+      @include breakpoint($screen-xsmin) {
+        font-size: 16px;
+      }
+    }
+  }
+}

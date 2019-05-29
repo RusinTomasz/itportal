@@ -52,6 +52,30 @@
       </nav>
     </div>
   </header>
+  {% if top_photo %}
+    <div class="top-photo responsive-img-background">
+    {{ top_photo }}
+    {% if breadcrumbs %}
+      {{ breadcrumbs }}
+    {% endif %}
+      <div class="text-banner-wrapper">
+        {% if current_page_title %}
+          <h1 class="page-title">{{ current_page_title }}</h1>
+        {% endif %}
+        {% if banner_subtitle %}
+          <p class="banner-subtitle">{{ banner_subtitle }}</p>
+        {% endif %}
+      </div>
+    </div>
+  {% elseif top_default_photo and not is_front %}
+  <div class="top-photo-default background" style="background-image:url('{{top_default_photo }}');">
+    <div class="text-banner-wrapper">
+      {% if top_default_photo %}
+        <h1 class="page-title">{{ current_page_title }}</h1>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
   <main role="main">
     <div class="layout-content">
     {% if is_front %}

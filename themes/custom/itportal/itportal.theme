@@ -108,35 +108,25 @@ function itportal_preprocess_page(&$variables) {
     }
   }else if(\Drupal::routeMatch()->getRouteName() == 'entity.taxonomy_term.canonical') {
     $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
-    $header_responsive = [
-      'label'    => 'hidden',
-      'type'     => 'responsive_image',
-      'settings' => [
-        'responsive_image_style' => 'banner_top',
-      ],
-    ];
-    $variables['top_photo'] = $term->field_banner_top_photo->view($header_responsive);
-  }else {
-    // $style        = \Drupal::entityTypeManager()->getStorage('image_style')->load('banner');
-    // $_top_img = Drupal\file\Entity\File::load( theme_get_setting('csTopImage')[0]);
-    // $variables['top_photo_default']        = $style->buildUrl($_top_img->getFileUri());
-  }
-}
-
-function itportal_preprocess_input(&$variables) {
-  if(array_key_exists('#id', $variables['element'])) {
-    $elementID = $variables['element']['#id'];
-    if($elementID == "edit-keys") {
-      $variables['attributes']['placeholder'] = t('Search...');
+    if($term->hasField('field_tx_banner_top_photo')) {
+      $header_responsive = [
+        'label'    => 'hidden',
+        'type'     => 'responsive_image',
+        'settings' => [
+          'responsive_image_style' => 'banner_top',
+        ],
+      ];
+      $variables['top_photo'] = $term->field_tx_banner_top_photo->view($header_responsive);
+    }else {
+      $style        = \Drupal::entityTypeManager()->getStorage('image_style')->load('large_slider');
+      $_top_img = Drupal\file\Entity\File::load(theme_get_setting('csTopImage')[0]);
+      $variables['top_default_photo']        = $style->buildUrl($_top_img->getFileUri());
     }
-  }
-}
-function itportal_preprocess_form_element(&$variables) {
-  if(array_key_exists('#id', $variables['element'])) {
-  $elementID = $variables['element']['#id'];
-    if($elementID == "edit-keys") {
-      $variables['label']['#title'] = '';
-    }
+   }
+  else if($_top_img = Drupal\file\Entity\File::load(theme_get_setting('csTopImage')[0])){
+    $style        = \Drupal::entityTypeManager()->getStorage('image_style')->load('large_slider');
+    $_top_img = Drupal\file\Entity\File::load( theme_get_setting('csTopImage')[0]);
+    $variables['top_default_photo']        = $style->buildUrl($_top_img->getFileUri());
   }
 }
 

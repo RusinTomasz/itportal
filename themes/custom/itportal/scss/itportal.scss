@@ -5,6 +5,7 @@ $site_theme_dir: "/themes/custom/itportal/";
 $site_module_dir: "modules/";
 @import "mixins/mixins";
 @import "variables/colours";
+@import "variables/grid";
 @import "fonts/font";
 @import "components/common";
 @import "layout/header";
