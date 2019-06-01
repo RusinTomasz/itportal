@@ -55,16 +55,18 @@
   {% if top_photo %}
     <div class="top-photo responsive-img-background">
     {{ top_photo }}
-    {% if breadcrumbs %}
+    {# {% if breadcrumbs %}
       {{ breadcrumbs }}
-    {% endif %}
+    {% endif %} #}
       <div class="text-banner-wrapper">
-        {% if current_page_title %}
-          <h1 class="page-title">{{ current_page_title }}</h1>
-        {% endif %}
-        {% if banner_subtitle %}
-          <p class="banner-subtitle">{{ banner_subtitle }}</p>
-        {% endif %}
+        <div class="container">
+          {% if banner_subtitle %}
+            <p class="banner-subtitle">{{ banner_subtitle }}</p>
+          {% endif %}
+          {% if current_page_title %}
+            <h1 class="page-title">{{ current_page_title }}</h1>
+          {% endif %}
+        </div>
       </div>
     </div>
   {% elseif top_default_photo and not is_front %}

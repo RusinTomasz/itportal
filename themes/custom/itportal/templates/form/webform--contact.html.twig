@@ -1,0 +1,33 @@
+<div class="form-wrapper">
+  <div class="request-form">
+    <div class="form-wrap clearfix">
+    <form{{ attributes }}>
+      {{ title_prefix }}
+        <div class="flex-wrapper">
+          <div class="flex-half">
+              {{ element.elements.name }}
+          </div>
+          <div class="flex-half">
+              {{ element.elements.email }}
+          </div>
+          <div class="flex-half">
+            {{ element.elements.numer_telefonu }}
+          </div>
+          <div class="flex-half">
+            {{ element.elements.subject }}
+          </div>
+          <div class="flex-full">
+            {{ element.elements.message }}
+            {{ element.form_token }}
+            {{ element.form_build_id }}
+            {{ element.form_id }}
+          </div>
+          <div class="submit-wrapper">
+            {{ element.elements.actions }}
+          </div>
+        </div>
+      {{ title_suffix }}
+      </form>
+    </div>
+  </div>
+</div>

@@ -6,7 +6,8 @@
     "require": {
         "composer/installers": "^1.0.24",
         "wikimedia/composer-merge-plugin": "^1.4",
-        "drupal/paragraphs": "^1.8"
+        "drupal/paragraphs": "^1.8",
+        "drupal/webform": "^5.2"
     },
     "replace": {
         "drupal/core": "^8.7"
