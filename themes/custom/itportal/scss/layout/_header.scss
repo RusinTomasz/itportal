@@ -15,6 +15,9 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  @include breakpoint($screen-min) {
+    min-height: 425px;
+  }
   .container {
     margin-top: 15rem;
   }
@@ -30,14 +33,13 @@
       padding: 0 2rem;
       margin: 3rem 0;
       @include breakpoint($screen-mmin) {
-        font-size: 42px;
+        font-size: 68px;
       }
       @include breakpoint($screen-min) {
-        font-size: 27px;
+        font-size: 52px;
       }
       @include breakpoint($screen-xsmin) {
-        min-height: 400px;
-        font-size: 24px;
+        font-size: 42px;
       }
     }
     .banner-subtitle {
@@ -46,12 +48,6 @@
       letter-spacing: 2.8px;
       text-transform: uppercase;
       padding: 0 2rem;
-      @include breakpoint($screen-min) {
-        font-size: 24px;
-      }
-      @include breakpoint($screen-xsmin) {
-        font-size: 16px;
-      }
     }
   }
 }
