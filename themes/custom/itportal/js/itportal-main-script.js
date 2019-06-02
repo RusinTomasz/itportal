@@ -23,6 +23,33 @@
           }
 
           const menuMobile = new MobileMenu(".main-menu", true);
+
+          const featuresButton = document.getElementById('features-button');
+          const benefitsButton = document.getElementById('benefits-button');
+          const benefitsDescription = document.querySelector("[data-toggle='benefits']");
+          const featuresDescription = document.querySelector("[data-toggle='features']");
+          benefitsButton.addEventListener('click', function() {
+            if(!this.classList.contains('active')) {         
+              benefitsDescription.classList.add('active');
+              featuresDescription.classList.remove('active');
+              this.classList.add('active');
+              if(this.classList.contains('active-features')) {
+                this.classList.remove('active-features');
+              }
+              featuresButton.classList.remove('active');
+            }
+          })
+          featuresButton.addEventListener('click', function() {      
+            featuresDescription.classList.add('active');
+            benefitsDescription.classList.remove('active');
+            if(!this.classList.contains('active')) {
+              this.classList.add('active');
+              benefitsButton.classList.add('active-features');
+              benefitsButton.classList.remove('active');
+            }
+          })
+
+
         });
     }
   };

@@ -53,8 +53,14 @@
               {{ content.field_paragraph_subtitle }}
               {{ content.field_paragraph_title }}
           </div>
-          {{ content.field_paragraph_description }}
-          {{ content.field_paragraph_features }}
+          <div class="toggle-button-wrapper">
+            <span id="benefits-button" class="options-item option-one active">Benefits</span>
+            <span id="features-button" class="options-item option-two">Features</span>
+          </div>
+          <div class="benefits-features-wrapper">
+            {{ content.field_paragraph_benefits }}
+            {{ content.field_paragraph_features }}
+          </div>
           {{ content.field_paragraph_link }}
         </div>
         <div class="flex-half image-right">

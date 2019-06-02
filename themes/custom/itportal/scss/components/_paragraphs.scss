@@ -1,0 +1,53 @@
+.paragraph-image-left {
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+}
+
+.paragraph-image-right {
+  margin-top: 8rem;
+  margin-bottom: 3rem;
+}
+
+.paragraph-image-right,
+.paragraph-image-left {
+  .section-number {
+    padding: 3rem 3rem 4rem 0;
+    .section-title {
+      margin: 2rem 0;
+    }
+  }
+  .benefits-features-wrapper {
+    min-height: 400px;
+    position: relative;
+    margin: 2rem 0;
+    .paragraph-options-item {
+      position: absolute;
+    }
+  }
+}
+
+.paragraph-options-item {
+  opacity: 0;
+  transition: all 0.4s;
+  &.active {
+    opacity: 1;
+  }
+}
+
+.banner-middle-photo {
+  padding: 8rem 1.5rem;
+  .subtitle-small,
+  .section-title,
+  .paragraph-description {
+    color: white;
+  }
+  .banner-wrapper {
+    text-align: center;
+    .subtitle-small {
+
+    }
+    .section-title {
+      margin: 2rem 0;
+    }
+  }
+}

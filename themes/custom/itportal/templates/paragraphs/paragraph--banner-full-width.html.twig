@@ -48,10 +48,14 @@
   {% block content %}
     <div class="banner-middle-photo responsive-img-background">
       <div class="container">
-        {{ content.field_paragraph_single_image }}
-        {{ content.field_paragraph_subtitle }}
-        {{ content.field_paragraph_title }}
-        {{ content.field_paragraph_description }}
+        <div class="flex-wrapper flex-middle flex-center">
+          <div class="banner-wrapper">
+            {{ content.field_paragraph_single_image }}
+            {{ content.field_paragraph_subtitle }}
+            {{ content.field_paragraph_title }}
+            {{ content.field_paragraph_description }}
+          </div>
+        </div>
       </div>
     </div>
   {% endblock %}
