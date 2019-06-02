@@ -13,5 +13,7 @@ $site_module_dir: "modules/";
 @import "layout/header";
 @import "layout/footer";
 @import "navigations/main-menu";
+@import "blocks/blocks";
 @import "content/frontpage";
 @import "content/node--webform";
+@import "content/node--article";

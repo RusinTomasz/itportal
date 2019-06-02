@@ -173,6 +173,9 @@
 }
 
 .faq {
+  background-image: url(../img/png/bg-mountains.png);
+  background-size: 100% 520px;
+  background-position: bottom center;
   padding: 4rem 0 12rem;
   .banner-wrapper {
     .section-number {
@@ -193,6 +196,7 @@
         padding: 1.5rem 4rem 1.5rem 3rem;
         border: 2px solid $border;
         margin: 3rem 0;
+        background-color: white;
         cursor: pointer;
         &.active {
           background-image: linear-gradient(to right, #f56c1d 0%, #fed154 100%);

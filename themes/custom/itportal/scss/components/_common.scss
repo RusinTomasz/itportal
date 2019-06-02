@@ -19,6 +19,13 @@
   width: 50%;
   padding: 0 1.5rem;
 }
+
+.flex-half-box {
+  width: calc(50% - 3rem);
+  padding: 0 4rem;
+  margin: 0 1.5rem;
+}
+
 .flex-one-third {
   width:  33%;
   padding: 0 1.5rem;

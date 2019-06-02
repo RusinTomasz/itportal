@@ -1,0 +1,19 @@
+#block-views-block-article-front-block-1 {
+  padding: 8rem 0 12rem;
+  .view-header {
+    width: 100%;
+    padding-bottom: 10rem;
+    .section-number {
+      padding: 5rem 3rem 5rem;
+      &:before {
+        content: '.06';
+      }
+      .subtitle-small {
+        text-align: center;
+      }
+      .section-title {
+        margin: 2rem 0;
+      }
+    }
+  }
+}
