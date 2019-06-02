@@ -1,4 +1,37 @@
+.article-regions-wrapper {
+  padding: 12rem 0;
+  .region-content {
+    width: calc(100% - 40rem);
+    box-shadow: 0 8px 16px rgba(230, 230, 230, 0.3);
+    background-color: #ffffff;
+  }
+  .region-sidebar-second {
+    width: 350px;
+    margin-left: 5rem;
+  }
+}
+
+
 .node--type-article {
+  &.node--view-mode-full {
+    padding: 6rem;
+    .author-name {
+      background-repeat: no-repeat;
+      background-size: 1.1rem;
+      background-position: left center;
+      background-image: url("../img/svg/autor-icon.svg");
+      padding-left: 2rem;
+    }
+    .article-title {
+      font-size: $article-title;
+      font-weight: 700;
+      letter-spacing: -1.02px;
+      color: $black-title;
+    }
+    .field--name-body {
+      padding-bottom: 5rem;
+    }
+  }
   &.node--view-mode-teaser {
     box-shadow: 0 16px 32px rgba(212, 212, 212, 0.2);
     background-color: #ffffff;
@@ -8,13 +41,31 @@
         width: 13rem;
       }
       .intro-image {
+        position: relative;
         width: calc(100% - 13rem);
+        @include breakpoint($screen-xsmin) {
+          width: 100%;
+        }
         a {
           display: block;
           margin-top: -7.5rem;
+          @include breakpoint($screen-min) {
+            margin-top: 0;
+            padding-top: 3rem;
+          }
+        }
+        .category-name {
+          position: absolute;
+          bottom: -18px;
+          left: 2rem;
         }
       }
       .intro-date-avatar {
+        @include breakpoint($screen-xsmin) {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
         .dateDay,
         .dateMonth {
           display: block;
@@ -40,6 +91,9 @@
           img {
             padding-top: 3rem;
             border-top: 2px solid #afafaf;
+            @include breakpoint($screen-xsmin) {
+              border: none;
+            }
           }
           .author-name {
             display: block;
@@ -52,6 +106,28 @@
       font-size: $footer-title;
       font-weight: 700;
       color: $black-title;
+    }
+  }
+  .category-name {
+    font-size: $font-large;
+    font-weight: 500;
+    letter-spacing: 3.2px;
+    text-transform: uppercase;
+    background-image: linear-gradient(to right, #f56c1d 0%, #fed154 100%);
+    color: white;
+    display: inline-block;
+    padding: 0.5rem 2rem;
+    position: relative;
+    &::before {
+      position: absolute;
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 10px 0 0 10px;
+      border-color: transparent transparent transparent $orange;
+      top: -9px;
+      left: 0;
     }
   }
 }

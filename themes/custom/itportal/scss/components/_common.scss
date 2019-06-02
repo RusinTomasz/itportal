@@ -24,6 +24,13 @@
   width: calc(50% - 3rem);
   padding: 0 4rem;
   margin: 0 1.5rem;
+  @include breakpoint($screen-mmin) {
+    width: 100%;
+    margin: 0 1.5rem 5rem;
+  }
+  @include breakpoint($screen-xsmin) {
+    padding: 0 2rem;
+  }
 }
 
 .flex-one-third {
@@ -53,6 +60,9 @@
   font-weight: 700;
   letter-spacing: -1.8px;
   color: $black-title;
+  @include breakpoint($screen-min) {
+    font-size: 36px;
+  }
 }
 
 .standard-button {
@@ -63,7 +73,10 @@
   background: white;
   border: none;
   box-shadow: none;
-  margin: 0 2rem;
+  margin: 1rem 2rem;
+  @include breakpoint($screen-min) {
+    padding: 2rem;
+  }
 }
 
 .submit-button {
@@ -98,11 +111,20 @@
     content: "01";
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     display: flex;
     align-items: center;
     height: 100%;
     @include sectionNumber();
+    @include breakpoint($screen-mmin) {
+      font-size: 250px;
+    }
+    @include breakpoint($screen-min) {
+      font-size: 190px;
+    }
+  }
+  @include breakpoint($screen-min) {
+    padding: 3rem 3rem 1rem;
   }
 }
 
@@ -123,7 +145,10 @@
   font-size:30px;
   font-weight: 600;
   color: white;
-  margin-right: 15rem;
+  margin: 2rem 15rem 2rem 0;
+  @include breakpoint($screen-dmin) {
+    margin: 2rem 8rem 2rem 0;
+  }
 }
 
 .field-banner-top-photo,

@@ -1,0 +1,15 @@
+.view-taxonomy-wrapper {
+  .node--type-article {
+    &.node--view-mode-teaser {
+      margin-bottom: 3rem;
+      .image-date-wrapper {
+        .intro-image {
+          a {
+            margin-top: 0;
+            padding-top: 4rem;
+          }
+        }
+      }
+    }
+  }
+}

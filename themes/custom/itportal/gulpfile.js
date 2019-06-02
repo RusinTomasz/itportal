@@ -29,12 +29,12 @@ gulp.task("sass", function() {
   return (
     gulp
       .src("./scss/**/*.scss")
-      // .pipe($.sourcemaps.init())
+      .pipe($.sourcemaps.init())
       // Convert sass into css
       .pipe(
         $.sass({
-          // outputStyle: 'nested', // libsass doesn't support expanded yet
-          outputStyle: "compressed", // libsass doesn't support expanded yet
+          outputStyle: 'nested', // libsass doesn't support expanded yet
+          // outputStyle: "compressed", // libsass doesn't support expanded yet
           precision: 10,
           includePaths: [
             config.bowerDir + "/normalize-scss/sass",
@@ -52,7 +52,7 @@ gulp.task("sass", function() {
         })
       )
       // Write sourcemaps
-      // .pipe($.sourcemaps.write())
+      .pipe($.sourcemaps.write())
       // Save css
       .pipe(gulp.dest("./css"))
   );

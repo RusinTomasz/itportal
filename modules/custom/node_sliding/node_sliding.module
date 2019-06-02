@@ -1,0 +1,155 @@
+<?php
+
+/**
+ * @file
+ * Contains node_sliding.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\node\Entity\NodeType;
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_help().
+ */
+function node_sliding_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the node_sliding module.
+    case 'help.page.node_sliding':
+      $output = '';
+      $output .= '<h3>' . t('About - Node Sliding') . '</h3>';
+      $output .= '<p>' . t('Setup in content type') . '</p>';
+      $output .= '<p>' . t('Additional filed in node template file is "{{ node_sliding }}"') . '</p>';
+      return $output;
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+
+function node_sliding_theme_suggestions_navsliding(array $variables) {
+  $suggestions = [];
+  $suggestions[] = 'node_sliding__' . (isset($variables['bundle'])?$variables['bundle']:'');
+  return $suggestions;
+}
+
+
+function node_sliding_preprocess_node(&$variables) {
+  if ($variables['view_mode'] == 'full') {
+    $bundle = $variables['node']->getType();
+    $node_type = NodeType::load($bundle);
+    if ($node_type->getThirdPartySetting('ns_custom_option','ns_node_sliding')){
+      $variables['node_sliding'] = _node_sliding_sliding($variables['node']);
+    }
+  }
+}
+
+function node_sliding_form_node_type_form_alter(&$form, &$form_state){
+  if (isset($form['type']['#default_value'])){
+    $bundle = $form['type']['#default_value'];
+    $node_type = NodeType::load($bundle);
+    $form['ns_custom_option'] = array(
+      '#type' => 'details',
+      '#title' => t('Additional options'),
+      '#group' => 'additional_settings',
+    );
+    $form['ns_custom_option']['ns_node_sliding'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Node Sliding'),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+      '#weight' => 10,
+    );
+    if (isset($node_type) && is_object($node_type)){
+      $form['ns_custom_option']['ns_node_sliding'][ '#default_value'] = (isset($node_type) && is_object($node_type))?$node_type->getThirdPartySetting('ns_custom_option','ns_node_sliding'):NULL;
+    }
+    //create submit handler
+    $form['actions']['submit']['#submit'][] = 'node_sliding_form_submit';
+  }
+}
+
+function node_sliding_form_submit(&$form) {
+  //get node type
+  $bundle = $form['type']['#default_value'];
+  $node_type = NodeType::load($bundle);
+
+  //set checkbox value to config and save
+  $node_type->setThirdPartySetting('ns_custom_option','ns_node_sliding',$form['ns_custom_option']['ns_node_sliding']['#value']);
+  $node_type->save();
+}
+
+
+function _node_sliding_sliding($node) {
+  $_nav_sliding = [
+    'prev' => NULL,
+    'next' => NULL,
+  ];
+  $created        = $node->getCreatedTime();
+  $field_name     = FALSE;
+  $term           = FALSE;
+
+  $bundle         = $node->getType();
+  $entityManager  = \Drupal::service('entity_field.manager');
+  $fields         = $entityManager->getFieldDefinitions('node', $bundle);
+  foreach ($fields as $key => $field){
+    if (isset($field) && is_object($field) && strpos($key,'field_') !== FALSE && !empty($field->getType()) && $field->getType() == 'entity_reference') {
+      $handler_settings = $field->get('settings');
+      if (isset($handler_settings) && is_array($handler_settings) && isset($handler_settings['handler']) && strpos($handler_settings['handler'],'taxonomy_term') !== FALSE){
+        $field_name = $key;
+        break;
+      }
+    }
+  }
+  // get term if available
+  if ($field_name) {
+    foreach ($node->get($field_name)->referencedEntities() as $enty){
+      $term[] = $enty->id();
+    }
+  }
+
+  foreach ($_nav_sliding as $key => $slide) {
+    if ($key == 'prev') {
+      $_dir = '<';
+    } else {
+      $_dir = '>';
+    }
+    $query = \Drupal::database()->select('node_field_data', 'nfd');
+    $query->fields('nfd', ['nid'])
+      ->condition('nfd.type', $bundle)
+      ->condition('nfd.status', 1)
+      ->condition('nfd.created', $created, $_dir);
+    if ($term){
+      $query->leftJoin('node__' . $field_name, 'tax', 'tax.entity_id = nfd.nid');
+      $query->condition('tax.bundle', $bundle);
+      $query->condition(sprintf('tax.%s_target_id',$field_name), implode(', ',$term), 'IN');
+    }
+    $query->orderBy('nfd.created' , ($key == 'prev' ? 'DESC' : 'ASC'))
+      ->range(0, 1);
+    $q_results = $query->execute()->fetchObject();
+
+
+    if (!empty($q_results)) {
+      $results = [];
+      foreach ($q_results as $item){
+        $results[] = $item;
+      }
+      $nodes = Node::loadMultiple($results);
+      foreach($nodes as $node_item) {
+        $title  = $node_item->getTitle();
+        $alias  = \Drupal::service('path.alias_manager')->getAliasByPath('/node/'.$node_item->id());
+        break;
+      }
+      $_nav_sliding[$key] = (object)[
+        'title' => $title,
+        'alias' => $alias,
+      ];
+    } else {
+      unset($_nav_sliding[$key]);
+    }
+  }
+  return $_nav_sliding;
+
+}
+

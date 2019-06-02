@@ -73,7 +73,9 @@
   <div class="top-photo-default background" style="background-image:url('{{top_default_photo }}');">
     <div class="text-banner-wrapper">
       {% if top_default_photo %}
-        <h1 class="page-title">{{ current_page_title }}</h1>
+        <div class="container">
+          <h1 class="page-title">{{ current_page_title }}</h1>
+        </div>
       {% endif %}
     </div>
   </div>
@@ -227,8 +229,19 @@
         </div>
       </section>
       {{ page.content }}
+    {% elseif (current_node_id == '2') or (current_node_id == '1') %}
+        {{ page.content }}
     {% else %}
-      {{ page.content }}
+      {% if page.sidebar_second %}
+      <div class="article-regions-wrapper">
+        <div class="container flex-wrapper">
+          {{ page.content }}
+          {{ page.sidebar_second }}
+        </div>
+      </div>
+      {% else %}
+        {{ page.content }}
+      {% endif %}
     {% endif %}
     </div>
   </main>
@@ -243,9 +256,9 @@
           <h4 class="footer-title">Important links</h4>
           {{ footer_menu }}
         </div>
-        <div class="flex-one-third">
+        {# <div class="flex-one-third">
           <p class="logo">IT-PORTAL</p>
-        </div>
+        </div> #}
       </div>
     </div>
     <div class="copy-rights">

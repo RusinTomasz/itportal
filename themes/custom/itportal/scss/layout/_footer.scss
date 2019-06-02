@@ -3,14 +3,28 @@
   .footer-container {
     background-image: url('../img/png/map.png');
     padding: 12rem 0;
+    @include breakpoint($screen-mmin) {
+      padding: 6rem 0;
+    }
   }
   .flex-one-third {
     padding: 0 5rem;
+    @include breakpoint($screen-dmin) {
+      padding: 0 3rem;
+    }
+    @include breakpoint($screen-mmin) {
+      width: 50%;
+      margin: 1rem 0;
+    }
+    @include breakpoint($screen-min) {
+      width: 100%;
+    }
   }
   .footer-title {
     font-size: $footer-title;
     font-weight: 700;
     color: white;
+    margin: 2rem 0 2rem;
   }
   .menu {
     margin: 0;

@@ -83,22 +83,44 @@
 {% set conLabel %}
   {{- label|raw -}}
 {% endset %}
+{% set category %}
+  {{- content.field_category|raw -}}
+{% endset %}
 {% set dateDay = node.createdtime|format_date('article_intro_day') %}
 {% set dateMonth = node.createdtime|format_date('article_intro_month') %}
 
 {{ attach_library('classy/node') }}
 {% if view_mode == 'full'%}
 <article{{ attributes.addClass(classes) }}>
-  {{ content.field_page_paragraphs }}
+  <p class="category-name">{{ category|striptags }}</p>
+  <p class="author-name">by Tomasz Rusin</p>
+  <h2 class="article-title">{{ conLabel|striptags }}</h2>
   {{ content.body }}
+  {% if node_sliding.next.title or node_sliding.prev.title %}
+  <div class="node-navi">
+    {% if node_sliding.next.title %}
+      <div class="nav-next-wrapper">
+        <p class="node-nav-label">Poprzedni artykuł</p>
+        <a class="nav-next" href="{{ node_sliding.next.alias }}" rel="next">{{ node_sliding.next.title }}</a>
+      </div>
+    {% endif %}
+    {% if node_sliding.prev.title %}
+    <div class="nav-prev-wrapper">
+      <p class="node-nav-label">Następny artykuł</p>
+      <a class="nav-prev" href="{{ node_sliding.prev.alias }}" rel="previous">{{ node_sliding.prev.title }}</a>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
 {% elseif view_mode == 'teaser' %}
 <article{{ attributes.addClass(classes,'flex-half-box') }}>
   <div class="flex-wrapper image-date-wrapper">
     <div class="intro-image">
     {{ content.field_intro_image }}
+    <p class="category-name">{{ category|striptags }}</p>
     </div>
     <div class="intro-date-avatar">
-      <span class="dateDay">{{ dateDay|striptags }}</span><span class="dateMonth">{{ dateMonth|striptags }}</span>
+      <div class="dates-wrapper"><span class="dateDay">{{ dateDay|striptags }}</span><span class="dateMonth">{{ dateMonth|striptags }}</span></div>
       <div class="avatar-holder">
         {{ content.field_avatar }}
         <span class="author-name">by Tomasz</span>

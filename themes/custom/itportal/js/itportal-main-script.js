@@ -23,6 +23,15 @@
           }
 
           const menuMobile = new MobileMenu(".main-menu", true);
+          const primaryMenuContainer = document.querySelector('.primary-menu-container');
+          window.addEventListener("scroll", function (event) {
+            var scroll = this.scrollY;
+            if (scroll > 0) {
+              primaryMenuContainer.classList.add('active');
+            } else {
+              primaryMenuContainer.classList.remove('active');
+            }
+          });
 
           const featuresButton = document.getElementById('features-button');
           const benefitsButton = document.getElementById('benefits-button');

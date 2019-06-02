@@ -1,0 +1,7 @@
+{%  if navigation is defined %}
+<ul class="node-sliding-navigation">
+  {% for key,nav in navigation %}
+    <li class="nav-{{ key }}"><a href="{{ nav.alias }}" rel="{{ key }}">{{ nav.title }}</a> </li>
+  {% endfor %}
+</ul>
+{% endif %}

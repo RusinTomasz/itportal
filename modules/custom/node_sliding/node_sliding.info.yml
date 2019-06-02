@@ -1,0 +1,9 @@
+name: 'Node sliding'
+type: module
+description: 'Node sliding module - setup in content type'
+core: 8.x
+package: 'MyCustom'
+version: '8.x-1.1'
+project: 'node_sliding'
+dependencies:
+  - node

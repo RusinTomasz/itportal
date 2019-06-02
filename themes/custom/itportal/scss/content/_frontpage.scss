@@ -5,11 +5,36 @@
   background-repeat: no-repeat;
   background-size: 100% 95%;
   height: 900px;
+  @include breakpoint($screen-min) {
+    background-image: linear-gradient(to right, #f56c1d 0%, #fed154 100%);
+   }
+  @include breakpoint($screen-dmin) {
+    height: 700px;
+    padding-top: 80px;
+  }
+  @include breakpoint($screen-mmin) {
+    height: 600px;
+    padding-top: 30px;
+  }
   .banner-half-text {
     width: 50%;
-    padding-left: 28rem;
+    padding-left: 16rem;
+    @include breakpoint(1200px 1580px) {
+      padding-left: 10rem;
+    }
+    @include breakpoint($screen-dmin) {
+      padding-left: 6rem;
+    }
+    @include breakpoint($screen-min) {
+      width: 100%;
+      padding-left: 4rem;
+      padding-right: 4rem;
+     }
     .banner-text-wrapper {
       padding-top: 8rem;
+      @include breakpoint($screen-xsmin) {
+        padding-top: 6rem;
+      }
       .banner-top-subtitle {
         letter-spacing: 2.8px;
         font-weight: 500;
@@ -19,6 +44,14 @@
         font-size: 80px;
         line-height: 90px;
         font-weight: 600;
+        @include breakpoint($screen-dmin) {
+          font-size: 50px;
+          line-height: 60px;
+        }
+        @include breakpoint($screen-xsmin) {
+          font-size: 42px;
+          line-height: 52px;
+        }
       }
       .banner-top-description {
         font-size: 18px;
@@ -32,17 +65,44 @@
     width: 50%;
     height: 740px;
     background-size: contain;
+    @include breakpoint($screen-dmin) {
+      height: 550px;
+    }
+    @include breakpoint($screen-min) {
+     display: none;
+    }
   }
 }
 
 .feature {
   padding: 1rem 0 12rem;
+  @include breakpoint($screen-min) {
+    padding: 1rem 0 6rem;
+  }
   .feature-item {
-    width: 33%;
+    width: 33.33%;
+    @include breakpoint($screen-mmin) {
+      width: 50%;
+    }
+    @include breakpoint($screen-min) {
+      width: 100%;
+    }
+    .section-number {
+      @include breakpoint($screen-dmin) {
+        padding: 8rem 5rem 1rem;
+      }
+      @include breakpoint($screen-min) {
+        padding: 3rem 3rem 1rem;
+      }
+    }
     .feature-icon {
       padding: 18rem 7rem 1rem;
       background-size: 7rem;
       background-position: 4rem 30%;
+      @include breakpoint($screen-mmin) {
+        padding: 13rem 5rem 1rem;
+        background-position: 4rem 15%;
+      }
       &.bell-icon {
         background-image: url("../img/png/bell-icon.png");
       }
@@ -61,6 +121,9 @@
       &.second-row {
         background-position: 4rem 15%;
         padding: 13rem 7rem 1rem;
+        @include breakpoint($screen-mmin) {
+          padding: 13rem 5rem 1rem;
+        }
       }
     }
     .feture-description {
@@ -72,6 +135,12 @@
     font-weight: 700;
     letter-spacing: -1.2px;
     color: $black-title;
+    @include breakpoint($screen-dmin) {
+      font-size: 36px;
+    }
+    @include breakpoint($screen-min) {
+      margin: 1rem 0;
+    }
   }
 }
 
@@ -101,6 +170,9 @@
       margin: 5rem 0;
       .url-button {
         min-width: 450px;
+        @include breakpoint($screen-min) {
+          min-width: 220px;
+        }
       }
     }
   }
@@ -109,11 +181,17 @@
 .what-we-do {
   background-image: url('../img/jpg/triangle-background.jpg');
   padding: 5rem 0 12rem;
+  @include breakpoint($screen-min) {
+    padding: 2rem 0 6rem;
+  }
   background-size: 100% 520px;
   background-position: bottom center;
   .banner-wrapper {
     .subtitle-small {
       text-align: center;
+      @include breakpoint($screen-min) {
+        text-align: left;
+      }
     }
     .section-title {
       margin: 2rem 0;
@@ -126,9 +204,12 @@
   }
   .carts-wrapper {
     margin-top: 5rem;
+    @include breakpoint($screen-dmin) {
+      margin-top: 0;
+    }
     .cart-item {
       max-width: 370px;
-      margin: 0 3rem;
+      margin: 5rem 3rem;
       padding: 8rem 5.5rem;
       background-color: white;
       border: 2px solid #eaefff;
@@ -149,6 +230,14 @@
           margin: 3rem 0;
         }
       }
+      @include breakpoint($screen-dmin) {
+        padding: 5rem 1.5rem 3rem;
+        box-shadow: 0 16px 32px rgba(208, 204, 255, 0.4);
+        border: none;
+      } 
+      @include breakpoint($screen-min) {
+        margin: 3rem;
+      }   
     }
   }
 }
@@ -156,10 +245,16 @@
 .marketing {
   background-color: #202332;
   padding: 4rem 0 12rem;
+  @include breakpoint($screen-mmin) {
+    padding: 2rem 0 8rem;
+  }  
   .banner-wrapper {
     align-items: flex-end;
     .section-number {
       padding: 8rem 0 1rem;
+      @include breakpoint($screen-mmin) {
+        padding: 4rem 0 1rem;
+      }  
       &::before {
         content: ".04";
         left: 0;
@@ -168,6 +263,14 @@
         color: white;
         margin: 3rem 0;
       }
+    }
+    .flex-half {
+      @include breakpoint($screen-mmin) {
+        width: 100%;
+        .banner-image {
+          margin: 3rem 0;
+        }
+      }  
     }
   }
 }
@@ -178,8 +281,16 @@
   background-position: bottom center;
   padding: 4rem 0 12rem;
   .banner-wrapper {
+    .flex-half {
+      @include breakpoint($screen-mmin) {
+        width: 100%;
+      }
+    }
     .section-number {
       padding: 8rem 0 1rem;
+      @include breakpoint($screen-min) {
+        padding: 3rem 0 1rem;
+      }
       &::before {
         content: ".05";
         left: 0;
@@ -190,6 +301,15 @@
     }
     .banner-image {
       margin-top: 15rem;
+      @include breakpoint($screen-mmin) {
+        margin-top: 6rem;
+      }
+      @include breakpoint($screen-min) {
+        margin-top: 3rem;
+      }
+      @include breakpoint($screen-xsmin) {
+        margin-top: 0;
+      }   
     }
     .faq-questions-wrapper {
       .question-item {
@@ -210,6 +330,9 @@
           .question-number {
             margin-right: 2.5rem;
             display: inline-block;
+            @include breakpoint($screen-min) {
+              margin-right: 0.6rem;
+            }
           }
         }
         .question-answer {
