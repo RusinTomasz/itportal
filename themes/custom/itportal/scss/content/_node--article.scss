@@ -4,10 +4,19 @@
     width: calc(100% - 40rem);
     box-shadow: 0 8px 16px rgba(230, 230, 230, 0.3);
     background-color: #ffffff;
+    @include breakpoint($screen-dmin) {
+      width: 100%;
+      order: 2;
+    }
   }
   .region-sidebar-second {
     width: 350px;
     margin-left: 5rem;
+    @include breakpoint($screen-dmin) {
+      width: 100%;
+      margin-left: 0;
+      text-align: center;
+    }
   }
 }
 
@@ -15,6 +24,9 @@
 .node--type-article {
   &.node--view-mode-full {
     padding: 6rem;
+    @include breakpoint($screen-xsmin) {
+      padding: 1.5rem;
+    }
     .author-name {
       background-repeat: no-repeat;
       background-size: 1.1rem;

@@ -46,7 +46,7 @@
 <div class="layout-container">
   <header class="primary-menu-container">
     <div class="flex-wrapper flex-middle">
-      <p class="logo">IT-PORTAL</p>
+      <p class="logo"><a class="logo-link" href="/">IT-PORTAL</a></p>
       <nav class="main-menu nav" role="navigation">
         {{ main_menu }}
       </nav>
@@ -83,15 +83,15 @@
   <main role="main">
     <div class="layout-content">
     {% if is_front %}
-      <div class="front-top-banner-wrapper flex-wrapper">
+      <div class="front-top-banner-wrapper flex-wrapper animated fadeIn">
         <div class="flex-wrapper flex-center banner-half-text">
           <div class="banner-text-wrapper">
-            <p class="banner-top-subtitle">---- DIGITAL AGENCY</p>
-            <h1 class="front-top-title">Lets Us Grow Your Creative Website</h1>
-            <p class="banner-top-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore sitam dumam.</p>
+            <p class="banner-top-subtitle animated fadeInLeft">---- DIGITAL AGENCY</p>
+            <h1 class="front-top-title animated fadeIn">Lets Us Grow Your Creative Website</h1>
+            <p class="banner-top-description animated fadeInUp">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore sitam dumam.</p>
           </div>
         </div>
-        <div class="mockup-wrapper background"></div>
+        <div class="mockup-wrapper background animated fadeInRight"></div>
       </div>
       <section class="feature container">
         <div class="flex-wrapper">
@@ -137,7 +137,7 @@
         <div class="banner-wrapper flex-wrapper flex-center flex-middle">
           <p class="subtitle-small">---- Seo Trafic</p>
           <h2 class="section-title">Whats Your Website Score?</h2>
-          <form class="page-speed-form"><input type="text" name="siteUrl" placeholder="Podaj link do swojej strony" class="standard-button url-button"><input type="submit" value="Sprawdź wynik" class="standard-button submit-button"></form>
+          <form class="page-speed-form"><input type="text" name="siteUrl" placeholder="Podaj link do swojej strony" class="standard-button url-button"><input id="speed-button" type="submit" value="Sprawdź wynik" class="standard-button submit-button"></form>
         </div>  
       </section>
       <section class="what-we-do background">

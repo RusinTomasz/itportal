@@ -33,31 +33,56 @@
             }
           });
 
-          const featuresButton = document.getElementById('features-button');
-          const benefitsButton = document.getElementById('benefits-button');
-          const benefitsDescription = document.querySelector("[data-toggle='benefits']");
-          const featuresDescription = document.querySelector("[data-toggle='features']");
-          benefitsButton.addEventListener('click', function() {
-            if(!this.classList.contains('active')) {         
-              benefitsDescription.classList.add('active');
-              featuresDescription.classList.remove('active');
-              this.classList.add('active');
-              if(this.classList.contains('active-features')) {
-                this.classList.remove('active-features');
+          const speedButton = document.getElementById('speed-button');
+          if(typeof(speedButton) != 'undefined' && speedButton != null && speedButton.length != 0) {
+            speedButton.addEventListener('click', function(e) {
+              e.preventDefault();
+              const urlInput = document.querySelector('.url-button');
+              const valueOfUrlInput = urlInput.value;
+              const link = 'https://developers.google.com/speed/pagespeed/insights/?hl=pl&url=';
+              if(valueOfUrlInput !== '' && valueOfUrlInput !== 'Podaj adres strony do sprawdzenia') {
+                var win = window.open(`${link}${valueOfUrlInput}`, '_blank');
+                win.focus();
+              }else {
+                urlInput.value = 'Podaj adres strony do sprawdzenia';
+                urlInput.style.color = '#f57619';
+                urlInput.addEventListener('click', function() {
+                  if (this.value === 'Podaj adres strony do sprawdzenia') {
+                    this.value = '';
+                    this.style.color = '#797e97';
+                  }
+                });
               }
-              featuresButton.classList.remove('active');
-            }
-          })
-          featuresButton.addEventListener('click', function() {      
-            featuresDescription.classList.add('active');
-            benefitsDescription.classList.remove('active');
-            if(!this.classList.contains('active')) {
-              this.classList.add('active');
-              benefitsButton.classList.add('active-features');
-              benefitsButton.classList.remove('active');
-            }
-          })
+            });
+          }
 
+          const benefitsWrapper = document.querySelector('.benefits-features-wrapper');
+          if(typeof(benefitsWrapper) != 'undefined' && benefitsWrapper != null && benefitsWrapper.length != 0) {
+            const featuresButton = document.getElementById('features-button');
+            const benefitsButton = document.getElementById('benefits-button');
+            const benefitsDescription = document.querySelector("[data-toggle='benefits']");
+            const featuresDescription = document.querySelector("[data-toggle='features']");
+            benefitsButton.addEventListener('click', function() {
+              if(!this.classList.contains('active')) {         
+                benefitsDescription.classList.add('active');
+                featuresDescription.classList.remove('active');
+                this.classList.add('active');
+                if(this.classList.contains('active-features')) {
+                  this.classList.remove('active-features');
+                }
+                featuresButton.classList.remove('active');
+              }
+            });
+            featuresButton.addEventListener('click', function() {      
+              featuresDescription.classList.add('active');
+              benefitsDescription.classList.remove('active');
+              if(!this.classList.contains('active')) {
+                this.classList.add('active');
+                benefitsButton.classList.add('active-features');
+                benefitsButton.classList.remove('active');
+              }
+            });
+          }
 
         });
     }

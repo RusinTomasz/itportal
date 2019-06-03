@@ -1,4 +1,5 @@
 .front-top-banner-wrapper {
+  overflow: hidden;
   color: white;
   padding-top: 120px;
   background-image: url("../img/jpg/bg.jpg");
@@ -8,6 +9,10 @@
   @include breakpoint($screen-min) {
     background-image: linear-gradient(to right, #f56c1d 0%, #fed154 100%);
    }
+   @include breakpoint(1200px 1700px) {
+    height: 800px;
+    padding-top: 60px;
+  }
   @include breakpoint($screen-dmin) {
     height: 700px;
     padding-top: 80px;
