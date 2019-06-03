@@ -11,7 +11,8 @@
         "drupal/pathauto": "^1.4",
         "drupal/advagg": "^3.5",
         "drupal/critical_css": "^1.10",
-        "drupal/metatag": "^1.8"
+        "drupal/metatag": "^1.8",
+        "drupal/minifyhtml": "^1.7"
     },
     "replace": {
         "drupal/core": "^8.7"

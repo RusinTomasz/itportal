@@ -1,5 +1,5 @@
 module.exports = {
   critical: {
-    baseDomain: "http://renoplast.adshosting.pl/"
+    baseDomain: "http://it-portal.pl/"
   }
 };
